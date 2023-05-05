@@ -4,13 +4,13 @@ export const navItems = [
     title: 'Menu',
     subMenu: true,
     path:'/'
-  },
-  {
-    id: 2,
-    title: 'Enquiry',
-    subMenu: false,
-    path:'/enquiry'
   }
+  //, {
+  //   id: 2,
+  //   title: 'Enquiry',
+  //   subMenu: false,
+  //   path:'/enquiry'
+  // }
 ];
 
 export const menuUrl = 'http://localhost:8080/public/menu';

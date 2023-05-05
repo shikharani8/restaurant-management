@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface OrderService {
     List<Order> findOrderByUser(User user);
+
+    Order createOrder(Order order);
 }
