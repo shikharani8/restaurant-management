@@ -1,6 +1,6 @@
 import React from 'react';
 import {navItems} from './Config';
-
+import { FaShoppingBag } from "react-icons/fa";
 
 const Header = (props) => {
   const cartItems = props.cartItems;
@@ -20,9 +20,14 @@ const Header = (props) => {
       <ul class="navbar-nav mr-auto">
         {navItems.map (item => {
           return (
-            <li class="nav-item active">
-                <a class="btn btn-dark" href={item.path}>{item.title}</a>
-            </li>
+           <div><li class="nav-item active">
+           <a class="btn btn-dark" href={item.path}>{item.title}</a>
+           
+       </li>
+
+       <FaShoppingBag textDecoration={cartData.length} 
+       style={{color: 'white', fontSize: '30px', float: 'right'}} />
+       <span class='badge badge-warning' id='lblCartCount'> {cartData.length} </span></div>
           );
         })}
 
