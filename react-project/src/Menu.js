@@ -12,7 +12,8 @@ class Menu extends Component {
     this.state = {
       menuCategories: [],
       catgryWiseData: {},
-      cart: [],
+      items: [],
+      cart: {},
     };
   }
 
@@ -39,6 +40,7 @@ class Menu extends Component {
             }
           });
           this.setState ({
+            items: menuCategoryList,
             menuCategories: Object.values (uniqueCatgryObj),
             catgryWiseData: catgryWiseData,
           });
@@ -47,7 +49,6 @@ class Menu extends Component {
   }
 
   handleRemoveItem = data => {
-    console.log("Handle Remove Item", data)
     const cartData = this.state.cart;
     const count = cartData[data.id] ? cartData[data.id] : 0;
     this.state.cart[data.id] = count == 0 ? 0 : count - 1;
@@ -57,7 +58,6 @@ class Menu extends Component {
   };
 
   handleAddItem = data => {
-    console.log("Handle Add Item", data);
     const cartData = this.state.cart;
     const count = cartData[data.id] ? cartData[data.id] : 0
     this.state.cart[data.id] = count + 1;
@@ -100,7 +100,7 @@ class Menu extends Component {
     const {menuCategories, catgryWiseData} = this.state;
     return (
       <div class="divbody">
-        <Header />
+        <Header cartItems={this.state.cart} items={this.state.items} />
         {menuCategories.map ((menuCategory, idx) => {
           return (
             <div class="m-2 p-3 w-85 mx-auto">
@@ -143,7 +143,7 @@ class Menu extends Component {
                                 <input
                                   size="1"
                                   type="text"
-                                  value={this.state.cart.length > 0 ? this.state.cart[data.id] : 0}
+                                  value={this.state.cart[data.id] ? this.state.cart[data.id] : 0}
                                   class="text-success ml-1 .input-sm text-center"
                                   name="qty"
                                 />
